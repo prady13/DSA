@@ -30,10 +30,10 @@ class Solution
         {
             int currentVal = getValue(s.charAt(i));
 
-            if(i<length - 1)
+            if(i<length - 1)        // Check if there is a next character to compare with
             {
                 int nextVal = getValue(s.charAt(i+1));
-                if (currentVal < nextVal)
+                if (currentVal < nextVal)            // Rule: If current value < next value, we subtract (e.g., IV = 5 - 1 = 4)
                 {
                     total = total - currentVal;
                 }
@@ -44,13 +44,13 @@ class Solution
             }
             else
             {
-                total = total + currentVal;
+                total = total + currentVal;        // If it's the last character, we always add it
             }
         }
         return total;
     }
 
-    private int getValue(char c) 
+    private int getValue(char c)         // Helper method to map Roman characters to numbers
     {
         switch(c) 
         {
