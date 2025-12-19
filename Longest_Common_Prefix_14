@@ -23,20 +23,20 @@ class Solution
 {
     public String longestCommonPrefix(String[] strs) 
     {
-        if (strs == null || strs.length == 0)
+        if (strs == null || strs.length == 0)  // 1. Base Case: If list is empty, return empty string
         {
             return "";
         }
 
-        String prefix = strs[0];
+        String prefix = strs[0];    // 2. Start by assuming the FIRST word is the answer (the prefix)
 
-        for (int i = 0; i<strs.length; i++)
+        for (int i = 0; i<strs.length; i++)   // 3. Compare this prefix against every other word in the list
         {
-            while (strs[i].indexOf(prefix) != 0) 
+            while (strs[i].indexOf(prefix) != 0)   // 4. While the current word (strs[i]) does NOT start with our prefix // (indexOf returns 0 if it starts with it, -1 or >0 otherwise)
             {
-                prefix = prefix.substring(0, prefix.length() - 1);
+                prefix = prefix.substring(0, prefix.length() - 1);   // Shorten the prefix by cutting off the last letter
             
-                if (prefix.isEmpty()) 
+                if (prefix.isEmpty())   // If the prefix becomes empty, nothing matches. Return "".
                 {
                     return "";
                 }
