@@ -14,18 +14,18 @@ Explanation: From left to right, it reads -121. From right to left, it becomes 1
 
 bool isPalindrome(int x) 
 {
-    if (x<0)
+    if (x<0)            // Negative numbers are not palindromes (e.g., -121 != 121-)
     {
         return false;
     }
-    long reversed = 0;
+    long reversed = 0;        // Use 'long' to prevent overflow when reversing the number.
     int original = x;
 
     while(original>0)
     {
-        int digit = original % 10;
-        reversed = reversed * 10 + digit;
-        original /= 10;
+        int digit = original % 10;            // Get last digit
+        reversed = reversed * 10 + digit;     // Append digit to reversed number
+        original /= 10;                       // Remove last digit from original
     }
-    return x==reversed;
+    return x==reversed;        // Check if they are the same
 }
