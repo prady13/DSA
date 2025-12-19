@@ -1,0 +1,30 @@
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+Input: head = [1,1,2]
+Output: [1,2]
+
+
+class Solution 
+{
+    public ListNode deleteDuplicates(ListNode head) 
+    {
+        if (head == null)  //Base case
+        {
+            return null;
+        }
+        ListNode current = head;    //Initialize a pointer
+
+        while (current != null && current.next != null)      // Loop until we reach the end of the list
+        {
+            if(current.val == current.next.val)      // Check if the current value is the same as the next value
+            {
+                current.next = current.next.next;    // SKIP the next node because it's a duplicate. We change the pointer to point to the node AFTER the next one
+            }
+            else
+            {
+                current = current.next;    // If they are different, just move forward normally.
+            }
+        }
+        return head;
+    }
+}
