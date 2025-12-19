@@ -5,26 +5,29 @@ class Solution
 {
     public boolean isSymmetric(TreeNode root) 
     {
-        if(root == null)
+        if(root == null)        // An empty tree is technically symmetric
         {
             return true;
         }
-        return isMirror(root.left, root.right);
+        return isMirror(root.left, root.right);        // Start comparing the left and right subtrees
     }
     private boolean isMirror(TreeNode p, TreeNode q) 
     {
-        if (p==null && q==null)
+        if (p==null && q==null)                // Base Case 1: Both nodes are null --> true
         {
             return true;
         }
-        if (p==null || q==null)
+        if (p==null || q==null)                //One is null & other is not --> false
         {
             return false;
         }
-        if (p.val != q.val)
+        if (p.val != q.val)                    //Different values --> false
         {
             return false;
         }
+        // Recursive Step: 
+        // 1. Compare Outer: n1.left vs n2.right
+        // 2. Compare Inner: n1.right vs n2.left
         return isMirror(p.left, q.right) && isMirror(p.right, q.left);
     }
 }
