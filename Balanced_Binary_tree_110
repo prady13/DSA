@@ -1,0 +1,42 @@
+Given a binary tree, determine if it is height-balanced.
+
+Input: root = [3,9,20,null,null,15,7]
+Output: true
+
+Input: root = [1,2,2,3,3,null,null,4,4]
+Output: false
+
+Input: root = []
+Output: true
+
+
+class Solution 
+{
+    public boolean isBalanced(TreeNode root) 
+    {
+        return getHeight(root) != -1;
+    }
+
+    private int getHeight(TreeNode node) 
+    {
+        if (node == null)       //Base case
+        {
+            return 0;
+        }
+
+        int leftHeight = getHeight(node.left);              // 1. Get height of the left subtree.
+        if (leftHeight == -1) return -1;        // If left is already imbalanced, propagate the -1 error up.
+
+        int rightHeight = getHeight(node.right);        // 2. Get height of the right subtree.
+        if (rightHeight == -1) return -1;        // If right is already imbalanced, propagate the -1 error up.
+
+        
+        if (Math.abs(leftHeight - rightHeight) > 1)         // 3. Check for imbalance at the CURRENT node.
+                                                        // If the difference between heights is more than 1, return -1.
+        {
+            return -1;
+        }
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
