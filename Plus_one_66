@@ -30,18 +30,19 @@ class Solution
 {
     public int[] plusOne(int[] digits) 
     {
-        for (int i = digits.length - 1; i>=0; i--)
+        for (int i = digits.length - 1; i>=0; i--)            // 1. Start from the last digit (rightmost) and move towards the front
         {
-            if (digits[i]<9)
+            if (digits[i]<9)            // 2. If the current digit is less than 9, we can just increment and finish                                
             {
                 digits[i]++;
                 return digits;
             }
-            digits[i]=0;
+            digits[i]=0;                // 3. If the digit was 9, it becomes 0 (carrying the 1 to the next iteration)
         }
-        int[] newNumber = new int[digits.length + 1];
-        newNumber[0] = 1;
+        int[] newNumber = new int[digits.length + 1];       // 4. If we reach this point, it means the number was all 9s (e.g., 999) 
+        newNumber[0] = 1;                                    // We need a new array with one extra space (e.g., 1000)
 
-        return newNumber;
+        return newNumber;            // The new array is initialized to all 0s by default in Java, 
+                                    // so we just need to set the first digit to 1.
     }
 }
